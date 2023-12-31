@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+  font-family: 'Product Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'),
+    url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2)
+      format('woff2');
+}
+* {
+  font-family: 'Product Sans';
+}
+.body {
+  @apply h-auto w-full flex justify-center items-center;
+}
+.main-layout {
+  @apply min-h-screen h-auto w-full bg-gradient-to-tr from-slate-100 to-slate-200 font-sans antialiased dark:from-slate-800 dark:to-slate-700 flex flex-row justify-center items-center bg-fixed;
+}
+.sidebar {
+  @apply w-1/5 p-3 max-h-screen overflow-y-auto hidden lg:block;
+}
+.sidebar-content {
+  @apply w-full flex flex-col justify-start space-y-6 pt-14;
+}
+.sidebar-menu-container {
+  @apply w-full dark:bg-slate-600 bg-slate-100 rounded-xl p-3 overflow-hidden;
+}
+.sidebar-notifications-container {
+  @apply w-full py-2;
+}
+.menu-title {
+  @apply text-lg text-zinc-700 dark:text-zinc-200;
+}
+.main {
+  @apply w-full lg:w-4/5 flex flex-col;
+}
+.main-header {
+  @apply fixed top-0 p-6 py-2 flex flex-row justify-between items-center w-full bg-opacity-50 backdrop-filter backdrop-blur-lg z-10;
+}
+.logo {
+  @apply text-2xl text-zinc-700 dark:text-zinc-200;
+}
+.home-container {
+  @apply h-auto max-h-screen w-full bg-opacity-50 backdrop-filter backdrop-blur-lg p-4 overflow-y-auto py-16 flex flex-col;
+}
+.btm-nav-container {
+  @apply fixed bottom-4 w-full pointer-events-none flex justify-center items-center;
+}
+.btm-nav-btn {
+  @apply text-zinc-700 dark:text-zinc-200 rounded-full hover:bg-cyan-800  dark:hover:text-zinc-200;
+}
+.btm-nav-main {
+  @apply rounded-full dark:bg-cyan-950 bg-cyan-100 p-2 z-50 pointer-events-auto shadow-md;
+}
+/* ================================== Simple Comps ======================= */
+.header-1 {
+  @apply mx-4 text-xl lg:text-2xl font-bold text-zinc-700 dark:text-zinc-200;
+}
+.notif-item-container {
+  @apply w-full flex flex-row justify-start items-start space-x-2 hover:bg-slate-200 dark:hover:bg-slate-500 rounded-lg p-2 transition-all cursor-pointer;
+}
+.popular-carousel-container {
+  @apply w-full shadow-inner rounded-lg my-6;
+}

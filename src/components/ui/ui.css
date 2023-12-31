@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.job-list-container {
+  @apply shadow-inner rounded-lg my-6 p-4;
+}
