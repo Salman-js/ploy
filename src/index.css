@@ -64,3 +64,32 @@
 .popular-carousel-container {
   @apply w-full shadow-inner rounded-lg my-6;
 }
+/* ===================================== Job Drawer ========================= */
+.job-drawer-modal {
+  @apply rounded-2xl;
+}
+.job-drawer-container {
+  @apply w-full flex lg:flex-row flex-col-reverse lg:space-x-2;
+}
+.drawer-job-detail-container {
+  @apply lg:w-4/5 w-full mx-auto px-10 py-4 lg:h-[74vh] h-full overflow-auto shadow-inner rounded-xl;
+}
+.company-tile {
+  @apply w-full lg:w-1/5 my-3 p-2 z-10 lg:h-[70vh] h-full overflow-auto;
+}
+.drawer-job-detail-main {
+  @apply w-full my-5;
+}
+.job-main-title-container {
+  @apply w-full flex flex-col lg:flex-row space-y-2 justify-center items-center lg:justify-between lg:sticky top-0 bg-white dark:bg-slate-600 p-4 shadow-sm rounded-lg z-10;
+}
+.job-type-detail-tile {
+  @apply p-3 rounded-lg bg-slate-100 dark:bg-slate-600 m-1;
+}
+
+.job-type-overview-container {
+  @apply w-full;
+}
+.company-tile-overview-container {
+  @apply w-full mt-3 p-3 shadow-inner rounded-lg;
+}
