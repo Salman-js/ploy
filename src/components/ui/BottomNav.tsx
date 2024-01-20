@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { Tooltip, Badge, Button } from 'antd';
 import { LayoutDashboard, Inbox, CalendarDays, Bell } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { HoverCard } from '@mantine/core';
+import { SidebarUserCard } from './SideBarComponents';
 
 const BottomNav = () => {
   const navigate = useNavigate();
@@ -22,7 +24,7 @@ const BottomNav = () => {
           </Tooltip>
           <div className='border-r dark:border-zinc-200 border-zinc-600 h-6'></div>
           <Tooltip title='Applications'>
-            <Badge count={5}>
+            <Badge count={5} color='#293145'>
               <Button
                 icon={<Inbox />}
                 type='text'
@@ -33,7 +35,7 @@ const BottomNav = () => {
             </Badge>
           </Tooltip>
           <Tooltip title='Meetings'>
-            <Badge count={2}>
+            <Badge count={2} color='#293145'>
               <Button
                 icon={<CalendarDays />}
                 type='text'
@@ -44,7 +46,7 @@ const BottomNav = () => {
             </Badge>
           </Tooltip>
           <Tooltip title='Notifications'>
-            <Badge count={2}>
+            <Badge count={2} color='#293145'>
               <Button
                 icon={<Bell />}
                 type='text'
@@ -55,14 +57,30 @@ const BottomNav = () => {
             </Badge>
           </Tooltip>
           <div className='border-l dark:border-zinc-200 border-zinc-600 h-6'></div>
-          <Tooltip title='You'>
-            <Avatar
-              src='https://github.com/Salman-js.png'
-              size={36}
-              shape='circle'
-              className='border-2 border-blue-300'
-            />
-          </Tooltip>
+          <HoverCard
+            width={210}
+            position='top'
+            radius='md'
+            shadow='md'
+            withinPortal
+            classNames={{
+              dropdown: 'dark:bg-gray-800 bg-slate-100 border-none p-0',
+            }}
+            offset={11}
+            openDelay={250}
+          >
+            <HoverCard.Target>
+              <Avatar
+                src='https://github.com/Salman-js.png'
+                size={36}
+                shape='circle'
+                className='border-2 border-blue-300 cursor-pointer'
+              />
+            </HoverCard.Target>
+            <HoverCard.Dropdown style={{ overflow: 'hidden' }}>
+              <SidebarUserCard />
+            </HoverCard.Dropdown>
+          </HoverCard>
         </Space>
       </div>
     </div>

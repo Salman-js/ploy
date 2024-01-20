@@ -16,7 +16,7 @@
   @apply h-auto w-full flex justify-center items-center;
 }
 .main-layout {
-  @apply min-h-screen h-auto w-full bg-gradient-to-tr from-slate-100 to-slate-200 font-sans antialiased dark:from-slate-800 dark:to-slate-700 flex flex-row justify-center items-center bg-fixed;
+  @apply min-h-screen h-auto w-full bg-zinc-50 font-sans antialiased dark:bg-gray-900  flex flex-row justify-center items-center bg-fixed;
 }
 .sidebar {
   @apply w-1/5 p-3 max-h-screen overflow-y-auto hidden lg:block;
@@ -25,7 +25,7 @@
   @apply w-full flex flex-col justify-start space-y-6 pt-14;
 }
 .sidebar-menu-container {
-  @apply w-full dark:bg-slate-600 bg-slate-100 rounded-xl p-3 overflow-hidden;
+  @apply w-full dark:bg-gray-800 bg-white rounded-xl p-3 overflow-hidden;
 }
 .sidebar-notifications-container {
   @apply w-full py-2;
@@ -81,10 +81,10 @@
   @apply w-full my-5;
 }
 .job-main-title-container {
-  @apply w-full flex flex-col lg:flex-row space-y-2 justify-center items-center lg:justify-between lg:sticky top-0 bg-white dark:bg-slate-600 p-4 shadow-sm rounded-lg z-10;
+  @apply w-full flex flex-col lg:flex-row space-y-2 justify-center items-center lg:justify-between lg:sticky top-0 bg-white dark:bg-gray-800 p-4 shadow-sm rounded-lg z-10;
 }
 .job-type-detail-tile {
-  @apply p-3 rounded-lg bg-slate-100 dark:bg-slate-600 m-1;
+  @apply p-3 rounded-lg bg-slate-100 dark:bg-gray-800 m-1;
 }
 
 .job-type-overview-container {
@@ -92,4 +92,44 @@
 }
 .company-tile-overview-container {
   @apply w-full mt-3 p-3 shadow-inner rounded-lg;
+}
+/* ================================Company================= */
+.company-container {
+  @apply min-h-screen max-h-screen w-full bg-opacity-50 backdrop-filter backdrop-blur-lg p-4 overflow-y-auto py-20;
+}
+.cover-image-container {
+  @apply w-full overflow-hidden;
+  max-height: 200px;
+}
+.company-main {
+  @apply lg:w-3/4 w-4/5 mx-auto;
+}
+.company-main-title-container {
+  @apply relative -top-10 bg-white dark:bg-gray-900 w-full p-5 shadow-lg flex flex-col mx-auto;
+}
+.company-main-title {
+  @apply flex flex-row justify-between w-full;
+}
+.company-title-container {
+  @apply flex flex-row space-x-4;
+}
+
+.company-mini-detail-tile {
+  @apply p-3 rounded-lg m-1;
+}
+.company-main-detail-container {
+  @apply w-full flex flex-row space-x-4 mx-auto;
+}
+.company-detail-container {
+  @apply w-[67%];
+}
+
+.company-related-detail-container {
+  @apply w-[33%];
+}
+.mini-company-card {
+  @apply w-full flex flex-row justify-between items-center space-x-2 hover:bg-slate-200 dark:hover:bg-slate-500 rounded-lg p-2 transition-all cursor-pointer;
+}
+.company-map {
+  @apply w-full overflow-hidden rounded-lg;
 }

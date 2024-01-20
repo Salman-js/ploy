@@ -26,15 +26,15 @@ export const MainFilterComp = () => {
   ];
   return (
     <Accordion defaultIndex={[0, 1, 2]} allowMultiple allowToggle>
-      <SearchInput className='mb-3' />
+      <SearchInput />
       {items.map((Item, index) => (
         <AccordionItem
           key={index}
           borderTopColor='transparent'
           borderBottomColor='transparent'
-          className='bg-white dark:bg-slate-500 rounded-xl mb-2'
+          className='bg-zinc-50 dark:bg-gray-800 rounded-xl mb-2'
         >
-          <h2 className='text-zinc-700 dark:text-zinc-200 text-xl my-2'>
+          <h2 className='text-zinc-700 dark:text-zinc-200 text-xl'>
             <AccordionButton>
               <Box as='span' flex='1' textAlign='left'>
                 {Item.title}
@@ -68,7 +68,10 @@ export const FilterByExp = () => {
     <div className='py-2'>
       {items.map((Item, index) => (
         <div key={index} className='my-1'>
-          <Checkbox>
+          <Checkbox
+            className='text-gray-900 checked:bg-gray-900 accent-gray-900'
+            style={{ accentColor: 'black' }}
+          >
             <span className='text-sm text-zinc-600 dark:text-zinc-200'>
               {Item.title}
             </span>

@@ -8,13 +8,13 @@ export function FollowButton({ followed }: { followed: boolean }) {
         <ActionIcon
           variant='default'
           size='md'
-          className='bg-slate-200 dark:bg-slate-500 rounded-lg dark:text-zinc-300 text-zinc-600 text-xs'
+          className='bg-slate-200 dark:bg-gray-700 rounded-lg dark:text-zinc-300 text-zinc-600 text-xs'
         >
           <AiOutlineCheck className='dark:text-zinc-300 text-zinc-600 text-xs' />
         </ActionIcon>
       ) : (
         <Button
-          className='bg-slate-200 dark:bg-slate-500 rounded-lg dark:text-zinc-300 text-zinc-600 text-xs'
+          className='bg-slate-200 dark:bg-gray-700 rounded-lg dark:text-zinc-300 text-zinc-600 text-xs'
           size='compact-sm'
         >
           Follow

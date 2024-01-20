@@ -2,12 +2,14 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute.tsx';
 import ErrorBoundary from '../components/Layout/Error.component.tsx';
 import { ROUTES } from './constants.ts';
-import Home from '../components/Home/index.tsx';
-import Search from '../components/Search/index.tsx';
+import Home from '../Pages/Home/index.tsx';
+import Search from '../Pages/Search/index.tsx';
 import Sidebar from '../components/ui/MainSideBar.tsx';
 import Header from '../components/ui/Header.tsx';
-import SearchSidebar from '../components/Search/components/SearchSidebar.tsx';
+import SearchSidebar from '../components/Search/SearchSidebar.tsx';
 import BottomNav from '../components/ui/BottomNav.tsx';
+import Company from '../Pages/Company/index.tsx';
+import { Toaster } from '@/shad/ui/toaster.tsx';
 
 const RoutesComponent = () => {
   const location = useLocation();
@@ -15,6 +17,7 @@ const RoutesComponent = () => {
   return (
     <div className='main-layout'>
       <Header />
+      <Toaster />
       <div className='sidebar'>
         {currentPathname.includes('/search') ? <SearchSidebar /> : <Sidebar />}
       </div>
@@ -22,6 +25,7 @@ const RoutesComponent = () => {
         <Routes>
           <Route path={ROUTES.HOME} element={<Home />} />
           <Route path={ROUTES.SEARCH} element={<Search />} />
+          <Route path={ROUTES.COMPANY} element={<Company />} />
           <Route element={<ProtectedRoute />}></Route>
         </Routes>
       </div>

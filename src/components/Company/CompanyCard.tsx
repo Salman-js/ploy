@@ -1,17 +1,19 @@
 import { Paper, Title } from '@mantine/core';
-import React from 'react';
-import './ui.css';
 import { Avatar } from 'antd';
 import { LayoutDashboard } from 'lucide-react';
 import { CardProps } from '../../interface/props.interface';
 import { FollowButton } from './FollowButton';
+import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '../../router/constants';
 
 export function CompanyCard({ image, title, category, group }: CardProps) {
+  const navigate = useNavigate();
   return (
     <Paper
       p='xl'
       radius='md'
-      className='w-64 lg:w-64 md:w-56 sm:w-80 h-44 bg-slate-100 dark:bg-slate-600 cursor-pointer shadow-md hover:shadow-lg transition-all m-2 my-4'
+      className='w-64 lg:w-64 md:w-56 sm:w-80 h-44 bg-slate-100 dark:bg-gray-800 cursor-pointer shadow-md hover:shadow-lg transition-all m-2 my-4'
+      onClick={() => navigate(`${ROUTES.COMPANY}`)}
     >
       <div className='w-full flex flex-row justify-between items-start'>
         <Avatar src={image} size={45} shape='square' />

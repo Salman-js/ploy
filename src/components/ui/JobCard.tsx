@@ -11,14 +11,17 @@ import {
   User,
 } from 'lucide-react';
 import { JobCardProps } from '../../interface/props.interface';
+import { ToastAction } from '@/shad/ui/toast';
+import { useToast } from '@/shad/ui/use-toast';
 
 export function JobCard({ image, title, category, onClick }: JobCardProps) {
+  const { toast } = useToast();
   return (
     <Col lg={8} md={12} sm={24} onClick={onClick}>
       <Paper
         p='xl'
         radius='md'
-        className='w-full h-56 bg-slate-100 dark:bg-slate-600 cursor-pointer shadow-md hover:shadow-lg transition-all'
+        className='w-full h-56 bg-slate-100 dark:bg-gray-800 cursor-pointer shadow-md hover:shadow-lg transition-all'
       >
         <div className='w-full flex flex-row justify-start items-start space-x-2'>
           <Avatar src={image} size={60} shape='square' />
@@ -61,21 +64,28 @@ export function JobCard({ image, title, category, onClick }: JobCardProps) {
           </div>
           <AntButton
             onClick={(e) => {
+              toast({
+                title: 'Job Post Saved',
+                description: 'Job Title',
+                action: (
+                  <ToastAction altText='Goto saved to undo'>Undo</ToastAction>
+                ),
+              });
               e.stopPropagation();
             }}
-            icon={<Bookmark className='text-sky-500 dark:text-slate-200' />}
+            icon={<Bookmark className='text-gray-900 dark:text-gray-200' />}
             shape='circle'
             type='text'
           />
         </div>
         <div className='flex flex-row space-x-2 justify-start mt-2'>
-          <div className='px-2 py-1 rounded-md bg-slate-200 dark:bg-slate-500 text-xs text-sky-600 dark:text-sky-300 text-semibold'>
-            React
+          <div className='px-2 py-1 rounded-md bg-slate-200 dark:bg-gray-700 text-xs text-gray-900 dark:text-sky-300 text-semibold'>
+            ReactJs
           </div>
-          <div className='px-2 py-1 rounded-md bg-slate-200 dark:bg-slate-500 text-xs text-sky-600 dark:text-sky-300 text-semibold'>
+          <div className='px-2 py-1 rounded-md bg-slate-200 dark:bg-gray-700 text-xs text-gray-900 dark:text-sky-300 text-semibold'>
             NextJs
           </div>
-          <div className='px-2 py-1 rounded-md bg-slate-200 dark:bg-slate-500 text-xs text-sky-600 dark:text-sky-300 text-semibold'>
+          <div className='px-2 py-1 rounded-md bg-slate-200 dark:bg-gray-700 text-xs text-gray-900 dark:text-sky-300 text-semibold'>
             NestJs
           </div>
         </div>

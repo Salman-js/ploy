@@ -1,4 +1,4 @@
-import { SidebarUserCard } from '../../ui/SideBarComponents';
+import { SidebarUserCard } from '../ui/SideBarComponents';
 import React from 'react';
 import { MainFilterComp } from './FilterComponents';
 

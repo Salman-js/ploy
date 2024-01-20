@@ -13,15 +13,11 @@ export function NotifItem({ isNew }: { isNew: boolean }) {
       {isNew ? (
         <Badge.Ribbon
           text={isNew ? 'New' : null}
-          color={darkTheme ? '#97a1ed' : '#f45858'}
+          color='#293145'
           className='text-xs text-zinc-700 dark:text-zinc-200 font-bold'
         >
           <div className='notif-item-container'>
-            <Avatar
-              src='https://images.unsplash.com/photo-1508193638397-1c4234db14d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80'
-              size={45}
-              shape='square'
-            />
+            <Avatar src='error' size={45} shape='square' />
             <div>
               <Typography
                 variant='subtitle2'
@@ -48,11 +44,7 @@ export function NotifItem({ isNew }: { isNew: boolean }) {
         </Badge.Ribbon>
       ) : (
         <div className='notif-item-container'>
-          <Avatar
-            src='https://images.unsplash.com/photo-1508193638397-1c4234db14d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80'
-            size={45}
-            shape='square'
-          />
+          <Avatar src='error' size={45} shape='square' />
           <div>
             <Typography
               variant='subtitle2'
@@ -83,7 +75,7 @@ export function NotifItem({ isNew }: { isNew: boolean }) {
 
 export function SidebarUserCard() {
   return (
-    <div className='sidebar-menu-container flex flex-col items-center text-center border border-zinc-300 dark:border-none p-0 mt-4'>
+    <div className='sidebar-menu-container flex flex-col items-center text-center border border-zinc-300 dark:border-none p-0'>
       <div className='w-full flex flex-row justify-between p-3'>
         <div className='p-3'></div>
         <div className='flex flex-col justify-center'>

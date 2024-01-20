@@ -18,14 +18,15 @@ export default function SearchInput(props: TextInputProps) {
       placeholder='Search'
       rightSectionWidth={42}
       leftSection={<Search size={20} />}
+      className='mb-3'
       rightSection={
         <ActionIcon
           size={28}
           radius='xl'
           variant='filled'
-          className='bg-slate-200 dark:bg-slate-600'
+          className='bg-gray-900'
         >
-          <ArrowRight size={20} className='overflow-hidden' />
+          <ArrowRight size={20} className='overflow-hidden ' />
         </ActionIcon>
       }
       {...props}

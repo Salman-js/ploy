@@ -14,17 +14,17 @@ import { AiOutlineCheck } from 'react-icons/ai';
 import { PiShareFat } from 'react-icons/pi';
 import { CiShare1 } from 'react-icons/ci';
 import { fallback } from './ui.utils';
-import { useMediaQuery } from '@mui/material';
+import { Link } from 'react-router-dom';
 export const ViewAllJobsButton = () => {
   return (
-    <Col lg={8} md={12} sm={24}>
+    <Col lg={8} md={24} sm={24} xs={20}>
       <Paper
         p='xl'
         radius='md'
-        className='w-full h-56 bg-slate-100 dark:bg-slate-600 cursor-pointer shadow-md hover:shadow-lg transition-all flex justify-center items-center'
+        className='w-full lg:h-56 h-20 bg-slate-100 dark:bg-gray-800 cursor-pointer shadow-md hover:shadow-lg transition-all flex justify-center items-center'
       >
         <Button
-          className='bg-slate-200 dark:bg-slate-500 rounded-lg dark:text-zinc-300 text-zinc-600 text-lg'
+          className='bg-slate-200 dark:bg-gray-700 rounded-lg dark:text-zinc-300 text-zinc-600 text-lg'
           rightSection={<ChevronRight />}
           size='xl'
         >
@@ -36,15 +36,13 @@ export const ViewAllJobsButton = () => {
 };
 
 export const JobDrawer = ({ open, onClose }) => {
-  const isDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-
   return (
     <Drawer
       placement='bottom'
       onClose={onClose}
       open={open}
       className='job-drawer-modal'
-      height={500}
+      height={520}
       maskStyle={{
         backdropFilter: 'blur(3px)',
       }}
@@ -136,12 +134,14 @@ export const CompanyTile = () => {
           />
           <div className='flex lg:flex-col flex-row justify-between my-2'>
             <div className=''>
-              <Title
-                order={4}
-                className='text-zinc-700 dark:text-zinc-200 transition-all hover:underline'
-              >
-                Company Name
-              </Title>
+              <Link to='/company'>
+                <Title
+                  order={4}
+                  className='text-zinc-700 dark:text-zinc-200 transition-all hover:underline'
+                >
+                  Company Name
+                </Title>
+              </Link>
               <Title order={6} className='text-zinc-500 dark:text-zinc-400'>
                 Company Location
               </Title>
@@ -244,16 +244,17 @@ export const JobMainTile = () => {
     </div>
   );
 };
+
 export const TileFollowButton = ({ followed }) => {
   return (
     <>
       {followed ? (
         <ActionIcon
           variant='default'
-          size='md'
-          className='bg-slate-900 dark:bg-slate-500 rounded-full dark:text-zinc-300 text-zinc-600 text-xs m-1 ml-0'
+          size='lg'
+          className='bg-slate-900 rounded-lg text-white text-xs m-1 ml-0'
         >
-          <AiOutlineCheck className='dark:text-zinc-300 text-zinc-600 text-xs' />
+          <AiOutlineCheck className='' />
         </ActionIcon>
       ) : (
         <Button
