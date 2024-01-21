@@ -5,6 +5,7 @@ export const ROUTES = {
   HOME: '/',
   SEARCH: '/search',
   COMPANY: '/company',
+  APPLICATIONS: '/applications',
 };
 
 export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL

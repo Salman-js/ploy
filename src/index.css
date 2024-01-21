@@ -95,7 +95,7 @@
 }
 /* ================================Company================= */
 .company-container {
-  @apply min-h-screen max-h-screen w-full bg-opacity-50 backdrop-filter backdrop-blur-lg p-4 overflow-y-auto py-20;
+  @apply min-h-screen max-h-screen w-full bg-opacity-50 backdrop-filter backdrop-blur-lg p-4 overflow-y-auto py-20 pt-0;
 }
 .cover-image-container {
   @apply w-full overflow-hidden;
@@ -132,4 +132,9 @@
 }
 .company-map {
   @apply w-full overflow-hidden rounded-lg;
+}
+/* ============================Applications ================== */
+
+.apps-container {
+  @apply min-h-screen max-h-screen w-full bg-opacity-50 backdrop-filter backdrop-blur-lg p-4 overflow-y-auto py-20;
 }

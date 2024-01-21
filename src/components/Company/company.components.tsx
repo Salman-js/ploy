@@ -211,3 +211,36 @@ export const CompanyMap = () => (
     loading='lazy'
   ></iframe>
 );
+export const StickyCompanyHeader = ({ visible }) => {
+  return (
+    <div
+      className={`w-full sticky z-30 transition-all p-0 overflow-x-hidden overflow-y-visible pb-3 + ${
+        visible ? 'top-14' : 'opacity-0'
+      }`}
+    >
+      <div className='company-main-title shadow-md p-3 bg-opacity-50 backdrop-filter backdrop-blur-lg'>
+        <div className='company-title-container'>
+          <Avatar src='error' size={45} shape='square' />
+          <div>
+            <Title order={4} className='text-gray-900 dark:text-zinc-100'>
+              Company Name
+            </Title>
+            <Title size={12} className='text-gray-700 dark:text-zinc-100'>
+              Lorem ipsum dolor sit amet consectetur.
+            </Title>
+          </div>
+        </div>
+        <Space>
+          <ActionIcon
+            variant='default'
+            size='lg'
+            className='bg-slate-100 rounded-lg text-gray-900 text-xs m-1 ml-0'
+          >
+            <PiShareFat className='' />
+          </ActionIcon>
+          <TileFollowButton followed={false} />
+        </Space>
+      </div>
+    </div>
+  );
+};

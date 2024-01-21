@@ -31,6 +31,7 @@ const BottomNav = () => {
                 shape='circle'
                 className='btm-nav-btn'
                 size='large'
+                onClick={() => navigate('/applications')}
               />
             </Badge>
           </Tooltip>

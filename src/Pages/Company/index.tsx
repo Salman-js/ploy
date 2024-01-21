@@ -1,15 +1,35 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   CompanyJobGroup,
   CompanyMainTitleCard,
-  CompanyMap,
   MiniCompanyCard,
+  StickyCompanyHeader,
 } from '../../components/Company/company.components';
 import { Button } from 'antd';
 
 const Company: React.FC = () => {
+  const [showFixedDiv, setShowFixedDiv] = useState(false);
+  const scrollableDivRef = useRef(null);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (scrollableDivRef.current) {
+        setShowFixedDiv(scrollableDivRef.current.scrollTop > 230);
+      }
+    };
+
+    if (scrollableDivRef.current) {
+      scrollableDivRef.current.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      if (scrollableDivRef.current) {
+        scrollableDivRef.current.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, []);
   return (
-    <main className='company-container'>
+    <main className='company-container' ref={scrollableDivRef}>
+      <StickyCompanyHeader visible={showFixedDiv} />
       <div className='cover-image-container'>
         <img
           src='https://www.hipi.info/wp-content/uploads/2021/03/Wallpaper-Twitter-Header-1500x500-012.jpg'
