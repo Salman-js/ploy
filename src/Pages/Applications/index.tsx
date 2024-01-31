@@ -6,13 +6,19 @@ import {
   ClockCircleOutlined,
 } from '@ant-design/icons';
 import { SegmentedLabeledOption, SegmentedValue } from 'antd/es/segmented';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import MiniApplicationCard, {
   MiniApplicationCardProps,
 } from '@/components/Applications/MiniApplicationCard';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { ROUTES } from '@/router/constants';
 
 const Application: React.FC = () => {
-  const [selectedStatus, setSelectedStatus] = useState('');
+  const location = useLocation();
+  const navigate = useNavigate();
+  const queryParams = new URLSearchParams(location.search);
+  const typeQuery = queryParams.get('tab') ?? '';
+  const [selectedStatus, setSelectedStatus] = useState(typeQuery);
   const applications: MiniApplicationCardProps[] = [
     {
       status: 'accepted',
@@ -111,6 +117,9 @@ const Application: React.FC = () => {
       icon: <FormOutlined />,
     },
   ];
+  useEffect(() => {
+    setSelectedStatus(typeQuery);
+  }, [typeQuery]);
   return (
     <main className='apps-container'>
       <h2 className='text-xl font-semibold tracking-wide text-gray-900 dark:text-slate-100'>
@@ -122,7 +131,12 @@ const Application: React.FC = () => {
             options={items}
             size='large'
             block
-            onChange={(option) => setSelectedStatus(option.toString())}
+            value={selectedStatus}
+            defaultValue={typeQuery}
+            onChange={(option) => {
+              setSelectedStatus(option.toString());
+              navigate(`${ROUTES.APPLICATIONS}?tab=${option.toString()}`);
+            }}
           />
         </Col>
         <Col span={24}>

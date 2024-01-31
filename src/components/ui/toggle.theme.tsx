@@ -1,33 +1,31 @@
+import { RootState } from '@/store/store';
+import useDarkMode from '@/utils/useDarkTheme';
 import { Button } from 'antd';
 import { MoonStar, SunIcon } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 const App = () => {
   // Retrieve dark mode preference from local storage, default to true
-  const storedDarkMode = JSON.parse(localStorage.getItem('darkMode')) ?? true;
-  const [isDarkMode, setIsDarkMode] = useState(storedDarkMode);
+  const { theme } = useSelector((state: RootState) => state.theme);
+  const [setDarkMode] = useDarkMode();
 
   const toggleDarkMode = () => {
-    setIsDarkMode((prevMode) => !prevMode);
+    setDarkMode();
   };
 
   useEffect(() => {
-    // Save dark mode preference to local storage
-    localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
-  }, [isDarkMode]);
-
-  useEffect(() => {
     // Apply dark mode styles dynamically
-    if (isDarkMode) {
+    if (theme === 'dark') {
       document.body.classList.add('dark');
     } else {
       document.body.classList.remove('dark');
     }
-  }, [isDarkMode]);
+  }, [theme]);
 
   return (
     <Button
-      icon={isDarkMode ? <SunIcon /> : <MoonStar />}
+      icon={theme === 'dark' ? <SunIcon /> : <MoonStar />}
       type='text'
       shape='circle'
       className='btm-nav-btn'

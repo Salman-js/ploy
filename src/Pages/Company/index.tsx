@@ -23,6 +23,7 @@ const Company: React.FC = () => {
 
     return () => {
       if (scrollableDivRef.current) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         scrollableDivRef.current.removeEventListener('scroll', handleScroll);
       }
     };

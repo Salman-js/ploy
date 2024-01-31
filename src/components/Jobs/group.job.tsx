@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Row } from 'antd';
-import { JobCard } from '../ui/JobCard';
-import { JobDrawer, ViewAllJobsButton } from '../ui/JobsComponents';
-import { Header1 } from './simpleComponents';
+import { JobCard } from './card.job';
+import { ViewAllJobsButton } from './mini.components.job';
+import { Header1 } from '../Home/simpleComponents';
+import { JobDrawer } from './drawer.job';
 
 const JobGroup: React.FC = () => {
   const [jobDrawerOpen, setJobDrawerOpen] = useState(false);

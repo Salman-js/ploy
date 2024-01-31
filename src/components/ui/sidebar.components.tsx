@@ -5,6 +5,8 @@ import { Avatar, Badge, Button as AntButton } from 'antd';
 import { Briefcase, PenSquare } from 'lucide-react';
 import { Typography } from '@mui/material';
 import useDarkMode from '../../utils/useDarkTheme';
+import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '@/router/constants';
 
 export function NotifItem({ isNew }: { isNew: boolean }) {
   const [darkTheme] = useDarkMode();
@@ -74,6 +76,7 @@ export function NotifItem({ isNew }: { isNew: boolean }) {
 }
 
 export function SidebarUserCard() {
+  const navigate = useNavigate();
   return (
     <div className='sidebar-menu-container flex flex-col items-center text-center border border-zinc-300 dark:border-none p-0'>
       <div className='w-full flex flex-row justify-between p-3'>
@@ -108,7 +111,10 @@ export function SidebarUserCard() {
           size='small'
         />
       </div>
-      <div className='border-t border-zinc-300 dark:border-slate-700 flex flex-row justify-center space-x-3 items-center mt-3 p-3 text-zinc-600 dark:text-zinc-200 cursor-pointer w-full hover:bg-slate-200 dark:hover:bg-slate-700'>
+      <div
+        className='border-t border-zinc-300 dark:border-slate-700 flex flex-row justify-center space-x-3 items-center mt-3 p-3 text-zinc-600 dark:text-zinc-200 cursor-pointer w-full hover:bg-slate-200 dark:hover:bg-slate-700 rounded-b-lg'
+        onClick={() => navigate(`${ROUTES.APPLICATIONS}?tab=pending`)}
+      >
         <Briefcase size={20} />
         <span className='text-zinc-600 dark:text-zinc-200 text-sm'>
           Applied jobs

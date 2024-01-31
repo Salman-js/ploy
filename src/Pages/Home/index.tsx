@@ -1,6 +1,6 @@
 import { Divider } from 'antd';
-import CompanyGroup from '../../components/Company/CompanyGroup';
-import JobGroup from '../../components/Home/JobGroup';
+import CompanyGroup from '../../components/Company/group.company';
+import JobGroup from '../../components/Jobs/group.job';
 
 export default function Home() {
   return (

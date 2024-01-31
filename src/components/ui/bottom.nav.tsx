@@ -4,7 +4,7 @@ import { Tooltip, Badge, Button } from 'antd';
 import { LayoutDashboard, Inbox, CalendarDays, Bell } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { HoverCard } from '@mantine/core';
-import { SidebarUserCard } from './SideBarComponents';
+import { SidebarUserCard } from './sidebar.components';
 
 const BottomNav = () => {
   const navigate = useNavigate();

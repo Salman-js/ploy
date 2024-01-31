@@ -2,7 +2,7 @@ import React from 'react';
 import { Header1 } from '../Home/simpleComponents';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { CompanyCard } from './CompanyCard';
+import { CompanyCard } from './card.company';
 
 interface CompanyGroupProps {
   group: 'popular' | 'suggested';
@@ -86,7 +86,7 @@ const CompanyGroup: React.FC<CompanyGroupProps> = ({ group }) => {
           },
           mobile: {
             breakpoint: {
-              max: 464,
+              max: 500,
               min: 0,
             },
             items: 1,
@@ -95,9 +95,9 @@ const CompanyGroup: React.FC<CompanyGroupProps> = ({ group }) => {
           tablet: {
             breakpoint: {
               max: 1024,
-              min: 464,
+              min: 500,
             },
-            items: 2,
+            items: 3,
             partialVisibilityGutter: 30,
           },
         }}

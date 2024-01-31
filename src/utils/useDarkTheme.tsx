@@ -1,42 +1,21 @@
-import { useEffect, useState } from 'react';
-
-const useLocalStorage = (key, initialValue) => {
-  const [storedValue, setStoredValue] = useState(() => {
-    try {
-      const item = localStorage.getItem(key);
-      return item ? JSON.parse(item) : initialValue;
-    } catch (error) {
-      console.log(error);
-      return initialValue;
-    }
-  });
-
-  const setValue = (value) => {
-    try {
-      const valueToStore =
-        value instanceof Function ? value(storedValue) : value;
-
-      setStoredValue(valueToStore);
-
-      localStorage.setItem(key, JSON.stringify(valueToStore));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  return [storedValue, setValue];
-};
+import { changeTheme } from '@/store/slices/theme.slice';
+import { RootState } from '@/store/store';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const useDarkMode = () => {
-  const [enabled, setEnabled] = useLocalStorage('dark-theme', false);
-  const isEnabled = typeof enabled === 'undefined' && enabled;
-
+  const { theme } = useSelector((state: RootState) => state.theme);
+  const dispatch = useDispatch();
+  const setDarkMode = () => {
+    dispatch(changeTheme());
+  };
   useEffect(() => {
     const className = 'dark';
     const bodyClass = window.document.body.classList;
 
-    isEnabled ? bodyClass.add(className) : bodyClass.remove(className);
-  }, [enabled, isEnabled]);
-  return [enabled, setEnabled];
+    theme === 'dark' ? bodyClass.add(className) : bodyClass.remove(className);
+  }, [theme]);
+  return [setDarkMode];
 };
 
 export default useDarkMode;

@@ -1,6 +1,5 @@
 import { Paper, Title } from '@mantine/core';
 import React from 'react';
-import './ui.css';
 import { Avatar, Col, Button as AntButton } from 'antd';
 import {
   AlarmClockOff,

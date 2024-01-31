@@ -7,7 +7,8 @@ import {
   Box,
 } from '@chakra-ui/react';
 import { Checkbox } from 'antd';
-import SearchInput from './SearchInput';
+import SearchInput from './search.input';
+import { jobCategories } from '../ui/main.sidebar';
 
 export const MainFilterComp = () => {
   const items = [
@@ -22,6 +23,10 @@ export const MainFilterComp = () => {
     {
       title: 'Work Style',
       component: <FilterByWorkStyle />,
+    },
+    {
+      title: 'Category',
+      component: <FilterByCategory />,
     },
   ];
   return (
@@ -121,6 +126,21 @@ export const FilterByWorkStyle = () => {
   return (
     <div className='py-2'>
       {items.map((Item, index) => (
+        <div key={index} className='my-1'>
+          <Checkbox>
+            <span className='text-sm text-zinc-600 dark:text-zinc-200'>
+              {Item.title}
+            </span>
+          </Checkbox>
+        </div>
+      ))}
+    </div>
+  );
+};
+export const FilterByCategory = () => {
+  return (
+    <div className='py-2'>
+      {jobCategories.map((Item, index) => (
         <div key={index} className='my-1'>
           <Checkbox>
             <span className='text-sm text-zinc-600 dark:text-zinc-200'>

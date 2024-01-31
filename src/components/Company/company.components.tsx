@@ -1,7 +1,7 @@
 import { ActionIcon, Paper, Title } from '@mantine/core';
 import { Avatar, Col, Row, Space, Button as AntButton } from 'antd';
 import { PiShareFat } from 'react-icons/pi';
-import { JobDrawer, TileFollowButton } from '../ui/JobsComponents';
+import { TileFollowButton } from '../Jobs/mini.components.job';
 import {
   AlarmClockOff,
   Bookmark,
@@ -16,6 +16,7 @@ import { useNavigate } from 'react-router-dom';
 import { ROUTES } from '../../router/constants';
 import { ToastAction } from '@/shad/ui/toast';
 import { useToast } from '@/shad/ui/use-toast';
+import { JobDrawer } from '../Jobs/drawer.job';
 
 export const CompanyMainTitleCard = () => {
   return (

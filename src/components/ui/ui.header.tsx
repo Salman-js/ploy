@@ -1,8 +1,8 @@
 import React from 'react';
 import { Search } from 'lucide-react';
 import { Button } from 'antd';
-import { Navigate, useNavigate } from 'react-router-dom';
-import ThemeSwitcher from './ToggleTheme';
+import { useNavigate } from 'react-router-dom';
+import ThemeSwitcher from './toggle.theme';
 
 const Header = () => {
   const navigate = useNavigate();
