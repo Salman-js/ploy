@@ -13,12 +13,9 @@ export const JobDrawer = ({ open, onClose }) => {
       onClose={onClose}
       open={open}
       className='job-drawer-modal'
-      height={520}
+      height={500}
       maskStyle={{
         backdropFilter: 'blur(3px)',
-      }}
-      style={{
-        backgroundColor: theme === 'dark' ? 'rgb(51 65 85)' : 'white',
       }}
       closable={false}
     >

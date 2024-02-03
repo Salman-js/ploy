@@ -1,8 +1,8 @@
 import { JobCardProps } from '@/interface/props.interface';
 import { ROUTES } from '@/router/constants';
 import { Paper, Title } from '@mantine/core';
-import { Avatar, Badge, Col } from 'antd';
-import { AlarmClockOff, Calendar } from 'lucide-react';
+import { Avatar, Badge } from 'antd';
+import { Building2, Calendar } from 'lucide-react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -48,8 +48,9 @@ const MiniApplicationCard: React.FC<MiniApplicationCardProps> = ({
             </div>
             <div className='w-full flex flex-row justify-between items-center'>
               <div className='py-1 rounded-md text-zinc-400 text-xs flex flex-row items-center'>
+                <Building2 size={12} className='mx-2' />
                 Company Name .
-                <Calendar size={12} className='mr-2' /> 3 Days ago
+                <Calendar size={12} className='mx-2' /> 3 Days ago
               </div>
             </div>
           </Paper>

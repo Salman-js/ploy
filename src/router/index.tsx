@@ -10,6 +10,8 @@ import Company from '@/Pages/Company/index.tsx';
 import { Toaster } from '@/shad/ui/toaster.tsx';
 import Application from '@/Pages/Applications/index.tsx';
 import Header from '@/components/ui/ui.header.tsx';
+import Meetings from '@/Pages/Meetings/index.tsx';
+import Notifications from '@/Pages/Notifications/index.tsx';
 
 const RoutesComponent = () => {
   const location = useLocation();
@@ -27,6 +29,8 @@ const RoutesComponent = () => {
           <Route path={ROUTES.SEARCH} element={<Search />} />
           <Route path={ROUTES.COMPANY} element={<Company />} />
           <Route path={ROUTES.APPLICATIONS} element={<Application />} />
+          <Route path={ROUTES.MEETINGS} element={<Meetings />} />
+          <Route path={ROUTES.NOTIFICATIONS} element={<Notifications />} />
           <Route element={<ProtectedRoute />}></Route>
         </Routes>
       </div>

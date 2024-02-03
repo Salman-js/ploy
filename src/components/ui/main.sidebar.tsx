@@ -1,4 +1,4 @@
-import { List } from 'antd';
+import { Button, List } from 'antd';
 import { NotifItem } from './sidebar.components';
 import {
   Briefcase,
@@ -10,6 +10,8 @@ import {
   LayoutDashboard,
 } from 'lucide-react';
 import { formatThreshold } from '@/utils/format.number';
+import { Link } from 'react-router-dom';
+import { ROUTES } from '@/router/constants';
 export const jobCategories = [
   {
     title: 'Software',
@@ -19,6 +21,7 @@ export const jobCategories = [
   {
     title: 'Information Tech.',
     icon: <Laptop size={20} className='text-gray-900 dark:text-gray-100' />,
+    value: 'InfoTech',
     amount: 128,
   },
   {
@@ -34,11 +37,13 @@ export const jobCategories = [
   {
     title: 'Law & Consult.',
     icon: <Briefcase size={20} className='text-gray-900 dark:text-gray-100' />,
+    value: 'Law',
     amount: 92,
   },
   {
     title: 'Graphics & Design',
     icon: <Brush size={20} className='text-gray-900 dark:text-gray-100' />,
+    value: 'Graphics',
     amount: 75,
   },
   {
@@ -46,6 +51,7 @@ export const jobCategories = [
     icon: (
       <LayoutDashboard size={20} className='text-gray-900 dark:text-gray-100' />
     ),
+    value: '',
     amount: 20985,
   },
 ];
@@ -53,7 +59,14 @@ const Sidebar = () => {
   return (
     <div className='sidebar-content'>
       <div className='sidebar-menu-container'>
-        <p className='menu-title'>Notifications</p>
+        <div className='w-full flex flex-row justify-between items-center'>
+          <div>
+            <p className='menu-title'>Notifications</p>
+          </div>
+          <Link to={ROUTES.NOTIFICATIONS}>
+            <Button type='link'>View All</Button>
+          </Link>
+        </div>
         <div className='sidebar-notifications-container'>
           <NotifItem isNew={true} />
           <NotifItem isNew={true} />

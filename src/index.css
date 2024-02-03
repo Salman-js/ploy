@@ -59,7 +59,7 @@
   @apply text-xl lg:text-2xl font-bold text-zinc-700 dark:text-zinc-200;
 }
 .notif-item-container {
-  @apply w-full flex flex-row justify-start items-start space-x-2 hover:bg-slate-200 dark:hover:bg-slate-500 rounded-lg p-2 transition-all cursor-pointer;
+  @apply w-full flex flex-row justify-start items-start space-x-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg p-2 transition-all cursor-pointer;
 }
 .popular-carousel-container {
   @apply w-full shadow-inner rounded-lg my-6;
@@ -102,7 +102,7 @@
   max-height: 200px;
 }
 .company-main {
-  @apply lg:w-3/4 w-4/5 mx-auto;
+  @apply lg:w-3/4 w-11/12 mx-auto;
 }
 .company-main-title-container {
   @apply relative -top-10 bg-white dark:bg-gray-900 w-full p-5 shadow-lg flex flex-col mx-auto;
@@ -113,7 +113,6 @@
 .company-title-container {
   @apply flex flex-row space-x-4;
 }
-
 .company-mini-detail-tile {
   @apply p-3 rounded-lg m-1;
 }
@@ -121,11 +120,11 @@
   @apply w-full flex flex-row space-x-4 mx-auto;
 }
 .company-detail-container {
-  @apply w-[67%];
+  @apply lg:w-[67%] w-full;
 }
 
 .company-related-detail-container {
-  @apply w-[33%];
+  @apply w-[33%] lg:block hidden;
 }
 .mini-company-card {
   @apply w-full flex flex-row justify-between items-center space-x-2 hover:bg-slate-200 dark:hover:bg-slate-500 rounded-lg p-2 transition-all cursor-pointer;
@@ -134,7 +133,33 @@
   @apply w-full overflow-hidden rounded-lg;
 }
 /* ============================Applications ================== */
-
 .apps-container {
-  @apply min-h-screen max-h-screen w-full bg-opacity-50 backdrop-filter backdrop-blur-lg p-4 overflow-y-auto py-20;
+  @apply min-h-screen max-h-screen w-full bg-opacity-50 backdrop-filter backdrop-blur-lg p-4 overflow-y-auto pt-10 lg:pt-20 pb-4;
+}
+/* ============================ Meetings ================== */
+.calendar-container {
+  @apply w-full py-2 pr-4;
+}
+/* ============================ Notifications =============== */
+.notifications-content-container {
+  @apply w-full flex flex-row;
+}
+.notifications-container {
+  @apply w-full lg:w-3/5 bg-white dark:bg-gray-800 rounded-2xl p-4;
+}
+.notifications-calendar-container {
+  @apply hidden lg:block w-2/5 ml-2;
+}
+.notifications-main-container {
+  @apply lg:max-h-[28em] max-h-[23em] overflow-y-auto pb-10 px-3;
+}
+.notification-item-container {
+  @apply w-full flex flex-row justify-start items-start space-x-2 hover:bg-slate-200 dark:hover:bg-slate-700 p-2 rounded-md transition-all cursor-pointer bg-white dark:bg-gray-800;
+}
+/* ============================== Search ======================== */
+.search-jobs-container {
+  @apply mt-4;
+}
+.search-container {
+  @apply min-h-screen max-h-screen w-full bg-opacity-50 backdrop-filter backdrop-blur-lg p-4 overflow-y-auto pt-12 lg:pt-20 pb-20 bg-white dark:bg-gray-900;
 }

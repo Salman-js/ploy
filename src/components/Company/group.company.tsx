@@ -46,12 +46,7 @@ const CompanyGroup: React.FC<CompanyGroupProps> = ({ group }) => {
     },
   ];
   const slides = companies.map((item, index) => (
-    <CompanyCard
-      key={index}
-      {...item}
-      group={group}
-      onClick={() => console.log(index)}
-    />
+    <CompanyCard key={index} {...item} onClick={() => console.log(index)} />
   ));
   return (
     <div>

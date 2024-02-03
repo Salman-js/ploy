@@ -1,15 +1,10 @@
 import { Title } from '@mantine/core';
-import React from 'react';
-import './ui.css';
 import { Avatar, Badge, Button as AntButton } from 'antd';
 import { Briefcase, PenSquare } from 'lucide-react';
-import { Typography } from '@mui/material';
-import useDarkMode from '../../utils/useDarkTheme';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES } from '@/router/constants';
 
 export function NotifItem({ isNew }: { isNew: boolean }) {
-  const [darkTheme] = useDarkMode();
   return (
     <>
       {isNew ? (
@@ -21,26 +16,18 @@ export function NotifItem({ isNew }: { isNew: boolean }) {
           <div className='notif-item-container'>
             <Avatar src='error' size={45} shape='square' />
             <div>
-              <Typography
-                variant='subtitle2'
+              <Title
+                order={6}
                 className='text-zinc-700 dark:text-zinc-200 font-bold'
               >
                 Company Name
-              </Typography>
-              <Typography
-                variant='caption'
-                className='text-zinc-700 dark:text-zinc-200'
-                noWrap={false}
-              >
-                New job post:
-                <Typography
-                  variant='caption'
-                  className='text-zinc-700 dark:text-zinc-200 font-bold'
-                  noWrap={false}
-                >
+              </Title>
+              <span className='text-zinc-700 dark:text-zinc-200 text-sm font-semibold'>
+                New job:
+                <span className='text-zinc-700 dark:text-zinc-200 text-sm font-normal ml-1'>
                   Job post
-                </Typography>
-              </Typography>
+                </span>
+              </span>
             </div>
           </div>
         </Badge.Ribbon>
@@ -48,26 +35,18 @@ export function NotifItem({ isNew }: { isNew: boolean }) {
         <div className='notif-item-container'>
           <Avatar src='error' size={45} shape='square' />
           <div>
-            <Typography
-              variant='subtitle2'
+            <Title
+              order={6}
               className='text-zinc-700 dark:text-zinc-200 font-bold'
             >
               Company Name
-            </Typography>
-            <Typography
-              variant='caption'
-              className='text-zinc-700 dark:text-zinc-200'
-              noWrap={false}
-            >
-              New job post:
-              <Typography
-                variant='caption'
-                className='text-zinc-700 dark:text-zinc-200 font-bold'
-                noWrap={false}
-              >
+            </Title>
+            <span className='text-zinc-700 dark:text-zinc-200 text-sm font-semibold'>
+              New job:
+              <span className='text-zinc-700 dark:text-zinc-200 text-sm font-normal ml-1'>
                 Job post
-              </Typography>
-            </Typography>
+              </span>
+            </span>
           </div>
         </div>
       )}

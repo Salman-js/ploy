@@ -1,12 +1,11 @@
 import { RootState } from '@/store/store';
 import useDarkMode from '@/utils/useDarkTheme';
-import { Button } from 'antd';
+import { Button, Switch } from 'antd';
 import { MoonStar, SunIcon } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 const App = () => {
-  // Retrieve dark mode preference from local storage, default to true
   const { theme } = useSelector((state: RootState) => state.theme);
   const [setDarkMode] = useDarkMode();
 
@@ -24,13 +23,25 @@ const App = () => {
   }, [theme]);
 
   return (
-    <Button
-      icon={theme === 'dark' ? <SunIcon /> : <MoonStar />}
-      type='text'
-      shape='circle'
-      className='btm-nav-btn'
-      onClick={toggleDarkMode}
-      size='large'
+    <Switch
+      checkedChildren={
+        <MoonStar
+          size={21}
+          style={{
+            color: theme === 'dark' ? 'rgb(221, 227, 236)' : 'black',
+          }}
+        />
+      }
+      unCheckedChildren={
+        <SunIcon
+          size={22}
+          style={{
+            color: theme === 'dark' ? 'rgb(221, 227, 236)' : '#494b4d',
+          }}
+        />
+      }
+      checked={theme === 'dark'}
+      onChange={toggleDarkMode}
     />
   );
 };

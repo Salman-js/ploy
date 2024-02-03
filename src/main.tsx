@@ -7,20 +7,19 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import '@mantine/core/styles.css';
-import { ThemeProvider, createTheme } from '@mui/material';
-import { typographyOption } from './utils/themeOptions.ts';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import store, { persistor } from './store/store.ts';
-const theme = createTheme(typographyOption);
+import { PrimeReactProvider } from 'primereact/api';
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <PrimeReactProvider>
           <App />
-        </PersistGate>
-      </Provider>
-    </ThemeProvider>
+        </PrimeReactProvider>
+      </PersistGate>
+    </Provider>
   </React.StrictMode>
 );

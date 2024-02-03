@@ -144,7 +144,7 @@ const Application: React.FC = () => {
             {applications
               .filter((app) => app.status.includes(selectedStatus))
               .map((item, index) => (
-                <MiniApplicationCard {...item} />
+                <MiniApplicationCard {...item} key={index} />
               ))}
           </Row>
         </Col>

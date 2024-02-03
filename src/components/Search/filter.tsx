@@ -6,32 +6,141 @@ import {
   AccordionIcon,
   Box,
 } from '@chakra-ui/react';
-import { Checkbox } from 'antd';
+import { Checkbox, ConfigProvider, FloatButton, Tooltip } from 'antd';
 import SearchInput from './search.input';
 import { jobCategories } from '../ui/main.sidebar';
-
-export const MainFilterComp = () => {
+import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
+import { useState } from 'react';
+import { IFilter } from '@/interface/search.interface';
+import { objectToQueryString } from '@/utils/string.utils';
+import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '@/router/constants';
+interface filterComponentProps {
+  filters: IFilter;
+  handleChange: (
+    dataIndex: 'experience' | 'jobType' | 'workStyle' | 'category',
+    title: string,
+    checked: boolean
+  ) => void;
+}
+interface mainFilterProps {
+  onApply?: () => void;
+}
+const MainFilterComp: React.FC<mainFilterProps> = ({ onApply }) => {
+  const navigate = useNavigate();
+  const initFilter: IFilter = {
+    category: [],
+    jobType: [],
+    experience: [],
+    title: '',
+    workStyle: [],
+  };
+  const [filters, setFilters] = useState<IFilter>(initFilter);
+  const handleSubFiltersChange = (
+    dataIndex: 'experience' | 'jobType' | 'workStyle' | 'category',
+    title: string,
+    checked: boolean
+  ) => {
+    if (checked) {
+      setFilters({
+        ...filters,
+        [dataIndex]: [...filters[dataIndex], title],
+      });
+    } else {
+      setFilters({
+        ...filters,
+        [dataIndex]: filters[dataIndex].filter((value) => value !== title),
+      });
+    }
+  };
   const items = [
     {
       title: 'Experience',
-      component: <FilterByExp />,
+      component: (
+        <FilterByExp filters={filters} handleChange={handleSubFiltersChange} />
+      ),
     },
     {
       title: 'Job Type',
-      component: <FilterByJobType />,
+      component: (
+        <FilterByJobType
+          filters={filters}
+          handleChange={handleSubFiltersChange}
+        />
+      ),
     },
     {
       title: 'Work Style',
-      component: <FilterByWorkStyle />,
+      component: (
+        <FilterByWorkStyle
+          filters={filters}
+          handleChange={handleSubFiltersChange}
+        />
+      ),
     },
     {
       title: 'Category',
-      component: <FilterByCategory />,
+      component: (
+        <FilterByCategory
+          filters={filters}
+          handleChange={handleSubFiltersChange}
+        />
+      ),
     },
   ];
+  const handleChangeTitle = (title: string) => {
+    setFilters({
+      ...filters,
+      title,
+    });
+  };
+  const handleObjToQuery = () => {
+    const query = objectToQueryString(filters);
+    navigate(`${ROUTES.SEARCH}?${query}`);
+    if (onApply) {
+      onApply();
+    }
+  };
+  const handleClearFilters = () => {
+    setFilters(initFilter);
+  };
   return (
-    <Accordion defaultIndex={[0, 1, 2]} allowMultiple allowToggle>
-      <SearchInput />
+    <Accordion
+      defaultIndex={[0, 1, 2, 3]}
+      allowMultiple
+      allowToggle
+      className='pb-10'
+    >
+      <ConfigProvider
+        theme={{
+          components: {
+            FloatButton: {
+              colorBgElevated: 'rgb(51 65 85)',
+              colorText: 'white',
+            },
+          },
+        }}
+      >
+        <Tooltip title='Apply'>
+          <FloatButton
+            icon={<CheckOutlined />}
+            onClick={handleObjToQuery}
+            style={{ left: 150, bottom: 30 }}
+          />
+        </Tooltip>
+      </ConfigProvider>
+      <Tooltip title='Clear'>
+        <FloatButton
+          icon={<CloseOutlined />}
+          type='default'
+          onClick={handleClearFilters}
+          style={{ left: 200, bottom: 30 }}
+        />
+      </Tooltip>
+      <SearchInput
+        value={filters?.title}
+        onChange={(e) => handleChangeTitle(e.target.value)}
+      />
       {items.map((Item, index) => (
         <AccordionItem
           key={index}
@@ -54,19 +163,29 @@ export const MainFilterComp = () => {
   );
 };
 
-export const FilterByExp = () => {
-  const items = [
+export const FilterByExp: React.FC<filterComponentProps> = ({
+  filters,
+  handleChange,
+}) => {
+  const items: {
+    title: string;
+    value: 'Intern' | 'Entry' | 'Intermediate' | 'Senior';
+  }[] = [
     {
       title: 'Internship',
+      value: 'Intern',
     },
     {
       title: 'Entry level',
+      value: 'Entry',
     },
     {
-      title: 'Intermidiate level',
+      title: 'Intermediate level',
+      value: 'Intermediate',
     },
     {
       title: 'Senior level',
+      value: 'Senior',
     },
   ];
   return (
@@ -76,6 +195,10 @@ export const FilterByExp = () => {
           <Checkbox
             className='text-gray-900 checked:bg-gray-900 accent-gray-900'
             style={{ accentColor: 'black' }}
+            checked={filters?.experience?.includes(Item.value)}
+            onChange={(e) =>
+              handleChange('experience', Item.value, e.target.checked)
+            }
           >
             <span className='text-sm text-zinc-600 dark:text-zinc-200'>
               {Item.title}
@@ -87,23 +210,37 @@ export const FilterByExp = () => {
   );
 };
 
-export const FilterByJobType = () => {
-  const items = [
+export const FilterByJobType: React.FC<filterComponentProps> = ({
+  filters,
+  handleChange,
+}) => {
+  const items: {
+    title: string;
+    value: 'FullTime' | 'PartTime' | 'Contract';
+  }[] = [
     {
       title: 'Full-time',
+      value: 'FullTime',
     },
     {
       title: 'Part-time',
+      value: 'PartTime',
     },
     {
       title: 'Contract',
+      value: 'Contract',
     },
   ];
   return (
     <div className='py-2'>
       {items.map((Item, index) => (
         <div key={index} className='my-1'>
-          <Checkbox>
+          <Checkbox
+            checked={filters?.jobType?.includes(Item.value)}
+            onChange={(e) =>
+              handleChange('jobType', Item.value, e.target.checked)
+            }
+          >
             <span className='text-sm text-zinc-600 dark:text-zinc-200'>
               {Item.title}
             </span>
@@ -114,20 +251,33 @@ export const FilterByJobType = () => {
   );
 };
 
-export const FilterByWorkStyle = () => {
-  const items = [
+export const FilterByWorkStyle: React.FC<filterComponentProps> = ({
+  filters,
+  handleChange,
+}) => {
+  const items: {
+    title: string;
+    value: 'Remote' | 'OnSite';
+  }[] = [
     {
       title: 'Remote',
+      value: 'Remote',
     },
     {
       title: 'On-site',
+      value: 'OnSite',
     },
   ];
   return (
     <div className='py-2'>
       {items.map((Item, index) => (
         <div key={index} className='my-1'>
-          <Checkbox>
+          <Checkbox
+            checked={filters?.workStyle?.includes(Item.value)}
+            onChange={(e) =>
+              handleChange('workStyle', Item.value, e.target.checked)
+            }
+          >
             <span className='text-sm text-zinc-600 dark:text-zinc-200'>
               {Item.title}
             </span>
@@ -137,12 +287,25 @@ export const FilterByWorkStyle = () => {
     </div>
   );
 };
-export const FilterByCategory = () => {
+
+export const FilterByCategory: React.FC<filterComponentProps> = ({
+  filters,
+  handleChange,
+}) => {
   return (
     <div className='py-2'>
       {jobCategories.map((Item, index) => (
         <div key={index} className='my-1'>
-          <Checkbox>
+          <Checkbox
+            checked={filters?.category?.includes(Item.value ?? Item.title)}
+            onChange={(e) =>
+              handleChange(
+                'category',
+                Item.value ?? Item.title,
+                e.target.checked
+              )
+            }
+          >
             <span className='text-sm text-zinc-600 dark:text-zinc-200'>
               {Item.title}
             </span>
@@ -152,3 +315,5 @@ export const FilterByCategory = () => {
     </div>
   );
 };
+
+export default MainFilterComp;

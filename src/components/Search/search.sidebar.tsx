@@ -1,6 +1,6 @@
 import { SidebarUserCard } from '../ui/sidebar.components';
 import React from 'react';
-import { MainFilterComp } from './filter';
+import MainFilterComp from './filter';
 
 const SearchSidebar = () => {
   return (
