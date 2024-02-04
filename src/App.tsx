@@ -6,6 +6,7 @@ import '@mantine/core/styles.css';
 import { ConfigProvider } from 'antd';
 import { useSelector } from 'react-redux';
 import { RootState } from './store/store';
+import { PrimeReactProvider } from 'primereact/api';
 
 function App() {
   const { theme } = useSelector((state: RootState) => state.theme);

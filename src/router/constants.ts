@@ -3,6 +3,7 @@
  */
 export const ROUTES = {
   HOME: '/',
+  AUTH: '/auth',
   SEARCH: '/search',
   COMPANY: '/company',
   APPLICATIONS: '/applications',

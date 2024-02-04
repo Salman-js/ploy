@@ -15,8 +15,36 @@
 .body {
   @apply h-auto w-full flex justify-center items-center;
 }
+/* ================================ Login ==================== */
+.login-container {
+  @apply min-h-screen w-screen flex flex-row justify-center items-center absolute top-0 left-0;
+  background-image: url('./Images/login-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.login-main-container {
+  @apply w-4/5 lg:w-2/3 rounded-3xl border-white border-4 min-h-[90vh] flex flex-row shadow-lg relative overflow-hidden;
+  z-index: 1;
+}
+.login-image-container {
+  @apply w-1/2 min-h-full lg:flex flex-col justify-between p-8 text-gray-100 bg-gray-900 bg-opacity-40 hidden;
+}
+.login-form-container {
+  @apply w-full lg:w-1/2 bg-white min-h-full flex flex-col justify-between items-center p-4 lg:px-14 px-8;
+}
+.login-form-inputs-container {
+  @apply w-full flex flex-col mt-6 space-y-6;
+}
+.p-password-input {
+  @apply bg-slate-100 outline-none active:outline-none;
+}
+.p-button-text {
+  @apply font-normal;
+}
+/* =============================== Home ====================== */
 .main-layout {
-  @apply min-h-screen h-auto w-full bg-zinc-50 font-sans antialiased dark:bg-gray-900  flex flex-row justify-center items-center bg-fixed;
+  @apply min-h-screen h-auto w-full bg-zinc-50 font-sans antialiased dark:bg-gray-900 flex flex-row justify-center items-center bg-fixed;
 }
 .sidebar {
   @apply w-1/5 p-3 max-h-screen overflow-y-auto hidden lg:block;
