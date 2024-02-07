@@ -1,12 +1,13 @@
 import { ActionIcon } from '@mantine/core';
 import { Divider, Drawer, Row } from 'antd';
-import { useSelector } from 'react-redux';
-import { CompanyTile, JobMainTile, JobTypeTile } from './mini.components.job';
-import { RootState } from '@/store/store';
+import {
+  CompanyTile,
+  DrawerJobMainTile,
+  JobTypeTile,
+} from './mini.components.job';
 import { X } from 'lucide-react';
 
 export const JobDrawer = ({ open, onClose }) => {
-  const { theme } = useSelector((state: RootState) => state.theme);
   return (
     <Drawer
       placement='bottom'
@@ -32,7 +33,7 @@ export const JobDrawer = ({ open, onClose }) => {
         <CompanyTile />
         <div className='drawer-job-detail-container'>
           <div className='drawer-job-detail-main'>
-            <JobMainTile />
+            <DrawerJobMainTile />
             <Divider />
             <Row gutter={[16, 16]} className='p-2'>
               <JobTypeTile title='Experience' value='3 years' />

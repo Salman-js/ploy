@@ -197,8 +197,12 @@ export const MiniCompanyCard = () => {
       onClick={() => navigate(`${ROUTES.COMPANY}`)}
     >
       <div>
-        <p className='font-semibold text-gray-600 text-sm'>Company Name</p>
-        <p className='text-gray-500 text-xs'>Company location</p>
+        <p className='font-semibold text-gray-700 dark:text-gray-200 text-sm'>
+          Company Name
+        </p>
+        <p className='text-gray-700 dark:text-gray-300 text-xs'>
+          Company location
+        </p>
       </div>
       <Avatar src='error' size={45} shape='square' />
     </div>

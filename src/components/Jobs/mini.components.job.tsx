@@ -1,12 +1,13 @@
 import { ActionIcon, Button, Paper, Title } from '@mantine/core';
 import React from 'react';
-import { Button as AntButton, Col, Image, Space } from 'antd';
-import { Bookmark, ChevronRight } from 'lucide-react';
+import { Button as AntButton, Avatar, Col, Image, Space } from 'antd';
+import { Bookmark, ChevronRight, MapPin } from 'lucide-react';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { PiShareFat } from 'react-icons/pi';
 import { CiShare1 } from 'react-icons/ci';
 import { fallback } from '../ui/ui.utils';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { ROUTES } from '@/router/constants';
 
 export const ViewAllJobsButton = () => {
   return (
@@ -109,6 +110,68 @@ export const JobMainTile = () => {
   return (
     <div className='job-main-title-container'>
       <div className='job-title-container'>
+        <p className='text-xl lg:text-2xl text-slate-800 dark:text-slate-100 font-semibold tracking-wide'>
+          Job Title
+        </p>
+        <div className='flex flex-row space-x-2 justify-start items-center my-1'>
+          <Avatar src='error' size={45} shape='square' />
+          <div>
+            <Link to={ROUTES.COMPANY}>
+              <span className='text-base lg:text-lg text-slate-500 dark:text-slate-200 tracking-wide'>
+                Company name
+              </span>
+            </Link>
+            <span className='text-sm lg:text-base text-slate-500 dark:text-slate-200 tracking-wide ml-2'>
+              . <MapPin className='inline my-auto' size={15} /> Company Location
+            </span>
+            <p className='text-xs lg:text-sm text-slate-500 dark:text-slate-200 tracking-wide'>
+              Posted 3 days ago
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className='job-detail-buttons-container'>
+        <Space direction='vertical' className='w-full justify-end'>
+          <Space>
+            <Button
+              className='bg-slate-200 dark:bg-slate-500 rounded-lg dark:text-zinc-300 text-zinc-600 text-xs'
+              leftSection={
+                <Bookmark
+                  className='text-slate-500 dark:text-slate-200'
+                  size={18}
+                />
+              }
+            >
+              Save
+            </Button>
+            <Button
+              className='bg-slate-200 dark:bg-slate-500 rounded-lg dark:text-zinc-300 text-zinc-600 text-xs'
+              leftSection={
+                <PiShareFat
+                  className='text-slate-500 dark:text-slate-200'
+                  size={19}
+                />
+              }
+            >
+              Share
+            </Button>
+          </Space>
+          <div className='w-full flex justify-center space-x-2'>
+            <Button className='bg-slate-900 dark:bg-slate-100 rounded-lg dark:text-slate-900 text-white text-xs w-full tracking-wide'>
+              Apply Now
+            </Button>
+          </div>
+        </Space>
+      </div>
+    </div>
+  );
+};
+
+export const DrawerJobMainTile = () => {
+  const navigate = useNavigate();
+  return (
+    <div className='job-main-title-container'>
+      <div className='job-title-container'>
         <p className='text-xl text-slate-800 dark:text-slate-100 font-semibold tracking-wide'>
           Job Title
         </p>
@@ -160,6 +223,7 @@ export const JobMainTile = () => {
               }
               type='text'
               className='dark:text-zinc-300 text-zinc-600 m-auto'
+              onClick={() => navigate(ROUTES.JOB)}
             />
           </div>
         </Space>
@@ -168,6 +232,73 @@ export const JobMainTile = () => {
   );
 };
 
+export const StickyJobMainTile = ({ visible }: { visible: boolean }) => {
+  return (
+    <div
+      className={`w-full sticky z-30 transition-all p-0 overflow-x-hidden overflow-y-visible pb-3 + ${
+        visible ? '-top-10 hidden lg:block' : 'hidden opacity-0'
+      }`}
+    >
+      <div className='sticky-job-main-title-container'>
+        <div className='job-title-container'>
+          <p className='text-xl lg:text-2xl text-slate-800 dark:text-slate-100 font-semibold tracking-wide'>
+            Job Title
+          </p>
+          <div className='flex flex-row space-x-2 justify-start items-center my-1'>
+            <Avatar src='error' size={45} shape='square' />
+            <div>
+              <Link to={ROUTES.COMPANY}>
+                <span className='text-base lg:text-lg text-slate-500 dark:text-slate-200 tracking-wide'>
+                  Company name
+                </span>
+              </Link>
+              <span className='text-sm lg:text-base text-slate-500 dark:text-slate-200 tracking-wide ml-2'>
+                . <MapPin className='inline my-auto' size={15} /> Company
+                Location
+              </span>
+              <p className='text-xs lg:text-sm text-slate-500 dark:text-slate-200 tracking-wide'>
+                Posted 3 days ago
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className='job-detail-buttons-container'>
+          <Space direction='vertical' className='w-full justify-end'>
+            <Space>
+              <Button
+                className='bg-slate-200 dark:bg-slate-500 rounded-lg dark:text-zinc-300 text-zinc-600 text-xs'
+                leftSection={
+                  <Bookmark
+                    className='text-slate-500 dark:text-slate-200'
+                    size={18}
+                  />
+                }
+              >
+                Save
+              </Button>
+              <Button
+                className='bg-slate-200 dark:bg-slate-500 rounded-lg dark:text-zinc-300 text-zinc-600 text-xs'
+                leftSection={
+                  <PiShareFat
+                    className='text-slate-500 dark:text-slate-200'
+                    size={19}
+                  />
+                }
+              >
+                Share
+              </Button>
+            </Space>
+            <div className='w-full flex justify-center space-x-2'>
+              <Button className='bg-slate-900 dark:bg-slate-100 rounded-lg dark:text-slate-900 text-white text-xs w-full tracking-wide'>
+                Apply Now
+              </Button>
+            </div>
+          </Space>
+        </div>
+      </div>
+    </div>
+  );
+};
 export const TileFollowButton = ({ followed }) => {
   return (
     <>

@@ -8,7 +8,7 @@ import {
   Briefcase,
   Search,
 } from 'lucide-react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { HoverCard, Title } from '@mantine/core';
 import { ROUTES } from '@/router/constants';
 import ToggleTheme from './toggle.theme';
@@ -115,6 +115,7 @@ const BottomNav = () => {
             }}
             offset={11}
             openDelay={250}
+            keepMounted
           >
             <HoverCard.Target>
               <Avatar
@@ -148,12 +149,14 @@ export function BottomNavUserCard() {
             className='border-2 border-blue-300 mx-auto'
           />
           <div className='pt-4'>
-            <Title
-              order={5}
-              className='text-zinc-700 dark:text-zinc-200 transition-all hover:underline'
-            >
-              Salman Moh.
-            </Title>
+            <Link to={ROUTES.ME}>
+              <Title
+                order={5}
+                className='text-zinc-700 dark:text-zinc-200 transition-all hover:underline'
+              >
+                Salman Moh.
+              </Title>
+            </Link>
             <Title
               size={12}
               className='text-zinc-500 dark:text-zinc-400 text-xs'

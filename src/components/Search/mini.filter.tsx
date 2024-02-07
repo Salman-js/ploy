@@ -20,7 +20,7 @@ const MiniFilter = () => {
         placement='right'
         onClose={handleClose}
         open={open}
-        className='job-drawer-modal'
+        className='rounded-l-xl'
         width={350}
         maskStyle={{
           backdropFilter: 'blur(3px)',

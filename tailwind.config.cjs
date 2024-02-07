@@ -12,6 +12,9 @@ module.exports = {
       },
     },
     extend: {
+      borderWidth: {
+        DEFAULT: '1px',
+      },
       keyframes: {
         'accordion-down': {
           from: { height: '0' },

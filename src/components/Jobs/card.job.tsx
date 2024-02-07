@@ -12,6 +12,7 @@ import {
 import { JobCardProps } from '../../interface/props.interface';
 import { ToastAction } from '@/shad/ui/toast';
 import { useToast } from '@/shad/ui/use-toast';
+import JobSkill from './item.skil';
 
 export function JobCard({ image, title, category, onClick }: JobCardProps) {
   const { toast } = useToast();
@@ -77,16 +78,8 @@ export function JobCard({ image, title, category, onClick }: JobCardProps) {
             type='text'
           />
         </div>
-        <div className='flex flex-row space-x-2 justify-start mt-2'>
-          <div className='px-2 py-1 rounded-md bg-slate-200 dark:bg-gray-700 text-xs text-gray-900 dark:text-sky-300 text-semibold'>
-            ReactJs
-          </div>
-          <div className='px-2 py-1 rounded-md bg-slate-200 dark:bg-gray-700 text-xs text-gray-900 dark:text-sky-300 text-semibold'>
-            NextJs
-          </div>
-          <div className='px-2 py-1 rounded-md bg-slate-200 dark:bg-gray-700 text-xs text-gray-900 dark:text-sky-300 text-semibold'>
-            NestJs
-          </div>
+        <div className='flex flex-wrap gap-2 justify-start mt-2'>
+          <JobSkill skill='ReactJs' />
         </div>
       </Paper>
     </Col>

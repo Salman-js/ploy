@@ -9,6 +9,8 @@ import Meetings from '@/Pages/Meetings/index.tsx';
 import Notifications from '@/Pages/Notifications/index.tsx';
 import Login from '@/Pages/Auth/index.tsx';
 import AuthUiBoundary from '@/components/Auth/ui.auth.boundary.tsx';
+import { Job } from '@/Pages/Job/index.tsx';
+import Profile from '@/Pages/User/index.tsx';
 
 const RoutesComponent = () => {
   return (
@@ -22,6 +24,8 @@ const RoutesComponent = () => {
           <Route path={ROUTES.APPLICATIONS} element={<Application />} />
           <Route path={ROUTES.MEETINGS} element={<Meetings />} />
           <Route path={ROUTES.NOTIFICATIONS} element={<Notifications />} />
+          <Route path={ROUTES.JOB} element={<Job />} />
+          <Route path={ROUTES.ME} element={<Profile />} />
           <Route element={<ProtectedRoute />}></Route>
         </Routes>
       </div>

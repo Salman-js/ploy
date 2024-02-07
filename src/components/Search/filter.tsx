@@ -6,7 +6,7 @@ import {
   AccordionIcon,
   Box,
 } from '@chakra-ui/react';
-import { Checkbox, ConfigProvider, FloatButton, Tooltip } from 'antd';
+import { Button, Checkbox, ConfigProvider, FloatButton, Tooltip } from 'antd';
 import SearchInput from './search.input';
 import { jobCategories } from '../ui/main.sidebar';
 import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
@@ -105,61 +105,67 @@ const MainFilterComp: React.FC<mainFilterProps> = ({ onApply }) => {
     setFilters(initFilter);
   };
   return (
-    <Accordion
-      defaultIndex={[0, 1, 2, 3]}
-      allowMultiple
-      allowToggle
-      className='pb-10'
-    >
-      <ConfigProvider
-        theme={{
-          components: {
-            FloatButton: {
-              colorBgElevated: 'rgb(51 65 85)',
-              colorText: 'white',
-            },
-          },
-        }}
-      >
-        <Tooltip title='Apply'>
-          <FloatButton
-            icon={<CheckOutlined />}
-            onClick={handleObjToQuery}
-            style={{ left: 150, bottom: 30 }}
-          />
-        </Tooltip>
-      </ConfigProvider>
-      <Tooltip title='Clear'>
-        <FloatButton
-          icon={<CloseOutlined />}
-          type='default'
-          onClick={handleClearFilters}
-          style={{ left: 200, bottom: 30 }}
-        />
-      </Tooltip>
+    <div className='flex flex-col'>
       <SearchInput
         value={filters?.title}
         onChange={(e) => handleChangeTitle(e.target.value)}
       />
-      {items.map((Item, index) => (
-        <AccordionItem
-          key={index}
-          borderTopColor='transparent'
-          borderBottomColor='transparent'
-          className='bg-zinc-50 dark:bg-gray-800 rounded-xl mb-2'
+      <div className='max-h-[66vh] overflow-auto'>
+        <Accordion
+          defaultIndex={[0, 1, 2, 3]}
+          allowMultiple
+          allowToggle
+          className='pb-10'
         >
-          <h2 className='text-zinc-700 dark:text-zinc-200 text-xl'>
-            <AccordionButton>
-              <Box as='span' flex='1' textAlign='left'>
-                {Item.title}
-              </Box>
-              <AccordionIcon />
-            </AccordionButton>
-          </h2>
-          <AccordionPanel pb={4}>{Item.component}</AccordionPanel>
-        </AccordionItem>
-      ))}
-    </Accordion>
+          {items.map((Item, index) => (
+            <AccordionItem
+              key={index}
+              borderTopColor='transparent'
+              borderBottomColor='transparent'
+              className='bg-zinc-50 dark:bg-gray-800 rounded-xl mb-2'
+            >
+              <h2 className='text-zinc-700 dark:text-zinc-200 text-xl'>
+                <AccordionButton>
+                  <Box as='span' flex='1' textAlign='left'>
+                    {Item.title}
+                  </Box>
+                  <AccordionIcon />
+                </AccordionButton>
+              </h2>
+              <AccordionPanel pb={4}>{Item.component}</AccordionPanel>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </div>
+      <div className='flex flex-row space-x-2 p-2'>
+        <ConfigProvider
+          theme={{
+            components: {
+              Button: {
+                colorPrimary: 'rgb(51 65 85)',
+                colorPrimaryHover: 'rgb(63, 80, 103)',
+                colorPrimaryActive: 'rgb(63, 80, 103)',
+              },
+            },
+          }}
+        >
+          <Button
+            type='primary'
+            icon={<CheckOutlined />}
+            onClick={handleObjToQuery}
+          >
+            Apply
+          </Button>
+          <Button
+            icon={<CloseOutlined />}
+            type='default'
+            onClick={handleClearFilters}
+          >
+            Clear
+          </Button>
+        </ConfigProvider>
+      </div>
+    </div>
   );
 };
 

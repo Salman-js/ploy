@@ -1,3 +1,5 @@
+import { Theme, ThemeConfig } from 'antd/es/config-provider/context';
+
 export const ployTheme = {
   colors: {
     darkBg: 'rgb(31 41 55)',
@@ -32,6 +34,42 @@ export const getCalendarConfig = (theme: 'dark' | 'light') => {
       colorPrimary: theme === 'dark' ? 'rgb(221, 227, 236)' : '#1677ff',
       buttonSolidCheckedColor:
         theme === 'dark' ? 'rgb(221, 227, 236)' : 'black',
+    },
+  };
+  return config;
+};
+
+export const getAntdThemeConfig = (theme: 'dark' | 'light'): ThemeConfig => {
+  const config: ThemeConfig = {
+    components: {
+      Modal: {
+        contentBg: theme === 'dark' ? 'rgb(51 65 85)' : 'white',
+        colorBgElevated: theme === 'dark' ? 'rgb(51 65 85)' : 'white',
+      },
+      Drawer: {
+        colorBgElevated: theme === 'dark' ? 'rgb(51 65 85)' : 'white',
+      },
+      Dropdown: {
+        colorBgElevated: theme === 'dark' ? 'rgb(51 65 85)' : 'white',
+      },
+      Checkbox: {
+        colorPrimary: 'rgb(51 65 85)',
+        colorPrimaryHover: 'rgb(51 65 85)',
+      },
+      Segmented: {
+        itemActiveBg: 'transparent',
+        itemSelectedBg: theme === 'dark' ? 'rgb(36, 46, 60)' : 'white',
+        itemSelectedColor: theme === 'dark' ? 'white' : 'rgb(51 65 85)',
+        colorBgContainer: theme === 'dark' ? 'white' : 'rgb(91, 113, 144)',
+      },
+      Tabs: {
+        itemColor: theme === 'dark' ? '#8cc1e0' : 'rgb(51 65 85)',
+        colorBorder: theme === 'dark' ? 'rgb(51 65 85)' : 'white',
+      },
+      List: {
+        colorText: theme === 'dark' ? 'white' : 'rgb(51 65 85)',
+        colorTextDescription: theme === 'dark' ? '#d2d1d1' : 'rgb(76, 95, 122)',
+      },
     },
   };
   return config;
