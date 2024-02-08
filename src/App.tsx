@@ -7,6 +7,9 @@ import { ConfigProvider } from 'antd';
 import { useSelector } from 'react-redux';
 import { RootState } from './store/store';
 import { getAntdThemeConfig } from './utils/themeOptions';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 function App() {
   const { theme } = useSelector((state: RootState) => state.theme);
@@ -16,7 +19,9 @@ function App() {
       <BrowserRouter>
         <ChakraProvider>
           <ConfigProvider theme={getAntdThemeConfig(theme)}>
-            <Routes />
+            <QueryClientProvider client={queryClient}>
+              <Routes />
+            </QueryClientProvider>
           </ConfigProvider>
         </ChakraProvider>
       </BrowserRouter>
