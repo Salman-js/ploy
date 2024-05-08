@@ -14,10 +14,10 @@ export const JobDrawer = ({ open, onClose }) => {
       onClose={onClose}
       open={open}
       className='job-drawer-modal'
-      height={500}
       maskStyle={{
         backdropFilter: 'blur(3px)',
       }}
+      height='80vh'
       closable={false}
     >
       <ActionIcon

@@ -276,3 +276,14 @@
 .profile-extra-container {
   @apply lg:w-1/3 w-full px-3;
 }
+
+/* ======================================= Apply ======================== */
+.application-form-container {
+  @apply lg:w-3/4 flex lg:flex-row flex-col-reverse w-full p-6 lg:justify-between justify-start;
+}
+.application-form-main {
+  @apply p-3;
+}
+.select-cv-container {
+  @apply p-4 rounded-xl flex flex-col justify-center items-center shadow-inner w-auto;
+}

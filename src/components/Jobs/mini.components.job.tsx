@@ -106,7 +106,9 @@ export const CompanyTile = () => {
   );
 };
 
-export const JobMainTile = () => {
+export const JobMainTile = ({ toApply = false }: { toApply?: boolean }) => {
+  const navigate = useNavigate();
+  const jobId = 'sdjfhs764785';
   return (
     <div className='job-main-title-container'>
       <div className='job-title-container'>
@@ -130,45 +132,51 @@ export const JobMainTile = () => {
           </div>
         </div>
       </div>
-      <div className='job-detail-buttons-container'>
-        <Space direction='vertical' className='w-full justify-end'>
-          <Space>
-            <Button
-              className='bg-slate-200 dark:bg-slate-500 rounded-lg dark:text-zinc-300 text-zinc-600 text-xs'
-              leftSection={
-                <Bookmark
-                  className='text-slate-500 dark:text-slate-200'
-                  size={18}
-                />
-              }
-            >
-              Save
-            </Button>
-            <Button
-              className='bg-slate-200 dark:bg-slate-500 rounded-lg dark:text-zinc-300 text-zinc-600 text-xs'
-              leftSection={
-                <PiShareFat
-                  className='text-slate-500 dark:text-slate-200'
-                  size={19}
-                />
-              }
-            >
-              Share
-            </Button>
+      {!toApply ? (
+        <div className='job-detail-buttons-container'>
+          <Space direction='vertical' className='w-full justify-end'>
+            <Space>
+              <Button
+                className='bg-slate-200 dark:bg-slate-500 rounded-lg dark:text-zinc-300 text-zinc-600 text-xs'
+                leftSection={
+                  <Bookmark
+                    className='text-slate-500 dark:text-slate-200'
+                    size={18}
+                  />
+                }
+              >
+                Save
+              </Button>
+              <Button
+                className='bg-slate-200 dark:bg-slate-500 rounded-lg dark:text-zinc-300 text-zinc-600 text-xs'
+                leftSection={
+                  <PiShareFat
+                    className='text-slate-500 dark:text-slate-200'
+                    size={19}
+                  />
+                }
+              >
+                Share
+              </Button>
+            </Space>
+            <div className='w-full flex justify-center space-x-2'>
+              <Button
+                className='bg-slate-900 dark:bg-slate-100 rounded-lg dark:text-slate-900 text-white text-xs w-full tracking-wide'
+                onClick={() => navigate(`/apply?job=${jobId}`)}
+              >
+                Apply Now
+              </Button>
+            </div>
           </Space>
-          <div className='w-full flex justify-center space-x-2'>
-            <Button className='bg-slate-900 dark:bg-slate-100 rounded-lg dark:text-slate-900 text-white text-xs w-full tracking-wide'>
-              Apply Now
-            </Button>
-          </div>
-        </Space>
-      </div>
+        </div>
+      ) : null}
     </div>
   );
 };
 
 export const DrawerJobMainTile = () => {
   const navigate = useNavigate();
+  const jobId = 'wefhsi734';
   return (
     <div className='job-main-title-container'>
       <div className='job-title-container'>
@@ -211,7 +219,10 @@ export const DrawerJobMainTile = () => {
             </Button>
           </Space>
           <div className='w-full flex justify-center space-x-2'>
-            <Button className='bg-slate-900 dark:bg-slate-100 rounded-lg dark:text-slate-900 text-white text-xs w-full tracking-wide'>
+            <Button
+              className='bg-slate-900 dark:bg-slate-100 rounded-lg dark:text-slate-900 text-white text-xs w-full tracking-wide'
+              onClick={() => navigate(`/apply?job=${jobId}`)}
+            >
               Apply Now
             </Button>
             <AntButton
@@ -232,7 +243,15 @@ export const DrawerJobMainTile = () => {
   );
 };
 
-export const StickyJobMainTile = ({ visible }: { visible: boolean }) => {
+export const StickyJobMainTile = ({
+  visible,
+  toApply = false,
+}: {
+  visible: boolean;
+  toApply?: boolean;
+}) => {
+  const navigate = useNavigate();
+  const jobId = 'sdjfhs764785';
   return (
     <div
       className={`w-full sticky z-30 transition-all p-0 overflow-x-hidden overflow-y-visible pb-3 + ${
@@ -262,39 +281,44 @@ export const StickyJobMainTile = ({ visible }: { visible: boolean }) => {
             </div>
           </div>
         </div>
-        <div className='job-detail-buttons-container'>
-          <Space direction='vertical' className='w-full justify-end'>
-            <Space>
-              <Button
-                className='bg-slate-200 dark:bg-slate-500 rounded-lg dark:text-zinc-300 text-zinc-600 text-xs'
-                leftSection={
-                  <Bookmark
-                    className='text-slate-500 dark:text-slate-200'
-                    size={18}
-                  />
-                }
-              >
-                Save
-              </Button>
-              <Button
-                className='bg-slate-200 dark:bg-slate-500 rounded-lg dark:text-zinc-300 text-zinc-600 text-xs'
-                leftSection={
-                  <PiShareFat
-                    className='text-slate-500 dark:text-slate-200'
-                    size={19}
-                  />
-                }
-              >
-                Share
-              </Button>
+        {!toApply ? (
+          <div className='job-detail-buttons-container'>
+            <Space direction='vertical' className='w-full justify-end'>
+              <Space>
+                <Button
+                  className='bg-slate-200 dark:bg-slate-500 rounded-lg dark:text-zinc-300 text-zinc-600 text-xs'
+                  leftSection={
+                    <Bookmark
+                      className='text-slate-500 dark:text-slate-200'
+                      size={18}
+                    />
+                  }
+                >
+                  Save
+                </Button>
+                <Button
+                  className='bg-slate-200 dark:bg-slate-500 rounded-lg dark:text-zinc-300 text-zinc-600 text-xs'
+                  leftSection={
+                    <PiShareFat
+                      className='text-slate-500 dark:text-slate-200'
+                      size={19}
+                    />
+                  }
+                >
+                  Share
+                </Button>
+              </Space>
+              <div className='w-full flex justify-center space-x-2'>
+                <Button
+                  className='bg-slate-900 dark:bg-slate-100 rounded-lg dark:text-slate-900 text-white text-xs w-full tracking-wide'
+                  onClick={() => navigate(`/apply?job=${jobId}`)}
+                >
+                  Apply Now
+                </Button>
+              </div>
             </Space>
-            <div className='w-full flex justify-center space-x-2'>
-              <Button className='bg-slate-900 dark:bg-slate-100 rounded-lg dark:text-slate-900 text-white text-xs w-full tracking-wide'>
-                Apply Now
-              </Button>
-            </div>
-          </Space>
-        </div>
+          </div>
+        ) : null}
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ import Login from '@/Pages/Auth/index.tsx';
 import AuthUiBoundary from '@/components/Auth/ui.auth.boundary.tsx';
 import { Job } from '@/Pages/Job/index.tsx';
 import Profile from '@/Pages/User/index.tsx';
+import Apply from '@/Pages/Apply/index.tsx';
 
 const RoutesComponent = () => {
   return (
@@ -26,6 +27,7 @@ const RoutesComponent = () => {
           <Route path={ROUTES.NOTIFICATIONS} element={<Notifications />} />
           <Route path={ROUTES.JOB} element={<Job />} />
           <Route path={ROUTES.ME} element={<Profile />} />
+          <Route path={ROUTES.APPLY} element={<Apply />} />
           <Route element={<ProtectedRoute />}></Route>
         </Routes>
       </div>
