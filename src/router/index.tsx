@@ -12,6 +12,7 @@ import AuthUiBoundary from '@/components/Auth/ui.auth.boundary.tsx';
 import { Job } from '@/Pages/Job/index.tsx';
 import Profile from '@/Pages/User/index.tsx';
 import Apply from '@/Pages/Apply/index.tsx';
+import FormFactory from '@/Pages/Form Generator/index.tsx';
 
 const RoutesComponent = () => {
   return (
@@ -28,6 +29,7 @@ const RoutesComponent = () => {
           <Route path={ROUTES.JOB} element={<Job />} />
           <Route path={ROUTES.ME} element={<Profile />} />
           <Route path={ROUTES.APPLY} element={<Apply />} />
+          <Route path={ROUTES.FORM} element={<FormFactory />} />
           <Route element={<ProtectedRoute />}></Route>
         </Routes>
       </div>

@@ -25,11 +25,12 @@ const LoginForm: React.FC = () => {
             </span>
           </Col>
           <Col span={24}>
-            <span className='p-float-label w-full rounded-md'>
+            <span className='p-float-label rounded-md'>
               <Password
-                id='email'
+                id='password'
                 className='w-full outline-none bg-slate-100 p-2 rounded-md'
                 toggleMask
+                inputClassName='w-full'
               />
               <label htmlFor='password'>Password</label>
             </span>

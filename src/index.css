@@ -287,3 +287,14 @@
 .select-cv-container {
   @apply p-4 rounded-xl flex flex-col justify-center items-center shadow-inner w-auto;
 }
+/* ======================================= Form Creator ================== */
+.create-form-container,
+.create-form-preview-container {
+  @apply lg:w-1/2 w-full space-y-8 min-h-[90vh] max-h-[90vh] overflow-y-auto pb-24;
+}
+.create-form-preview-container {
+  @apply space-y-8;
+}
+.form-generator-container {
+  @apply min-h-screen max-h-screen w-full bg-opacity-50 backdrop-filter backdrop-blur-lg p-1 lg:p-4 overflow-y-auto pt-12 lg:pt-20 pb-20 bg-white dark:bg-gray-900 flex flex-row space-x-4;
+}

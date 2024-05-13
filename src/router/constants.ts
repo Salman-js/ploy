@@ -12,6 +12,7 @@ export const ROUTES = {
   NOTIFICATIONS: '/notifications',
   ME: '/me',
   APPLY: '/apply',
+  FORM: '/form',
 };
 
 export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
